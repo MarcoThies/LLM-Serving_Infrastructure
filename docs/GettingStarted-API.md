@@ -20,7 +20,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
 ## Inference
 
  - General text generation:
-  ```bash
+  ```
   curl --user username:pw https://localhost:8443/api/generate -d '{
   "model": "llama3",
   "prompt": "Why is the sky blue?"
