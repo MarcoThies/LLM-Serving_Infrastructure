@@ -1,3 +1,4 @@
+
 # Ready to use LLM-Serving Infrastructure - free, fast, frictionless
 
 ## Overview
@@ -22,6 +23,7 @@ To be found in docs/Adminguide.md
 To be found in docs/Adminguide.md
 
 ## Contributing
+
  - Fork the repository<br>
  - Create a new branch (git checkout -b feature-branch)<br>
  - Make your changes<br>
@@ -30,7 +32,9 @@ To be found in docs/Adminguide.md
  - Create a new Pull Request
 
 ## License
+
 This project is licensed under a custom license - see the License.txt file for details.
 
 ## Contact
+
 For any inquiries, please contact Marco Thies at thies"at"consultt.net
