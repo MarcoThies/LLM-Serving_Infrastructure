@@ -6,14 +6,14 @@ The Ollama API offers the following functionalities in the current version 0.1.3
 
 ## Management of LLMs
 - **Listing all downloaded LLMs:**
-  ```bash
-  curl --user username:pw https://localhost:8443/api/tags```
+  `curl --user username:pw https://localhost:8443/api/tags`
 
 - **Herunterladen eines LLMs vom Ollamas Model library:**
-  ```bash
+  `
   curl --user username:pw https://localhost:8443/api/pull -d '{
   "name": "llama3:8b"
-}'```
+  }'
+  `
 
 A desired LLM is always identified by its basic name (e.g., llama3) and a tag with information about the corresponding execution regarding size, fine-tune, and quantification (e.g., 8b-instruct-q5_K_M). A link to the Ollama Model Library with all available LLMs and their executions is provided below. The file-based import of LLMs can be done on the server by the administrator using .GGUF and .safetensor files.
 
@@ -27,7 +27,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
 }' ```
 
  - General text generation with several available parameters
-  ```bash
+  `bash
   curl --user username:pw https://localhost:8443/api/generate -d '{
   "model": "llama3",
   "prompt": "Why is the sky blue?",
@@ -65,7 +65,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
     "rope_frequency_scale": 0.8,
     "num_thread": 8
   }
-}'```
+}'`
  
   - Text generation in chat context:
    ```bash
