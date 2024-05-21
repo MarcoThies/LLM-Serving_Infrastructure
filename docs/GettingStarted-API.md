@@ -6,14 +6,16 @@ The Ollama API offers the following functionalities in the current version 0.1.3
 
 ## Management of LLMs
 - **Listing all downloaded LLMs:**
-  `curl --user username:pw https://localhost:8443/api/tags`
+  ```
+  curl --user username:pw https://localhost:8443/api/tags
+  ```
 
 - **Herunterladen eines LLMs vom Ollamas Model library:**
-  `
+  ```
   curl --user username:pw https://localhost:8443/api/pull -d '{
   "name": "llama3:8b"
   }'
-  `
+  ```
 
 A desired LLM is always identified by its basic name (e.g., llama3) and a tag with information about the corresponding execution regarding size, fine-tune, and quantification (e.g., 8b-instruct-q5_K_M). A link to the Ollama Model Library with all available LLMs and their executions is provided below. The file-based import of LLMs can be done on the server by the administrator using .GGUF and .safetensor files.
 
@@ -24,7 +26,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
   curl --user username:pw https://localhost:8443/api/generate -d '{
   "model": "llama3",
   "prompt": "Why is the sky blue?"
-  '
+  }'
   ```
 
  - General text generation with several available parameters
@@ -65,11 +67,12 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
     "rope_frequency_base": 1.1,
     "rope_frequency_scale": 0.8,
     "num_thread": 8
-  }
-}'```
+   }
+   }'
+  ```
  
-  - Text generation in chat context:
-   ```bash
+ - Text generation in chat context:
+  ```
   curl --user username:pw https://localhost:8443/api/chat -d '{
   "model": "llama3",
   "messages": [
@@ -78,32 +81,35 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
       "content": "why is the sky blue?"
     }
     ]
-  }'```
+  }'
+  ```
  
-  - Text generation according to OpenAI standard:
-   ```bash
-   curl --user username:pw https://localhost:8443/v1/chat/completions \
-    		-H "Content-Type: application/json" \
-   		 -d '{
-        "model": "llama3",
-        "messages": [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant."
-            },
-            {
-                "role": "user",
-                "content": "Hello!"
-            }
-        ]
-    }'```
+ - Text generation according to OpenAI standard:
+  ```
+  curl --user username:pw https://localhost:8443/v1/chat/completions \
+   	-H "Content-Type: application/json" \
+  	-d '{
+		"model": "llama3",
+		"messages": [
+		{
+			"role": "system",
+            "content": "You are a helpful assistant."
+        },
+        {
+			"role": "user",
+            "content": "Hello!"
+        }
+		]
+	}'
+  ```
  
-  - Generation of vector embeddings for text:
-  ```bash
+ - Generation of vector embeddings for text:
+  ```
   curl --user username:pw https://localhost:8443/api/embeddings -d '{
   "model": "all-minilm",
   "prompt": "Here is an article about llamas..."
-}'```
+  }'
+  ```
  
  Responses are streamed by default (one http-reply per token). The last response also includes information about load and inference times. For a definition of templates with model parameters, system prompts, and more, Ollama offers the creation of so-called model files. These and all other functions and parameters are
  
