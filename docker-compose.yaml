@@ -1,0 +1,46 @@
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    volumes:
+      - ./ollama:/root/.ollama
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 2
+            capabilities: [gpu]
+    networks:
+      - ollama-network
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    volumes:
+      - ./open-webui:/app/backend/data
+    restart: always
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    networks:
+      - ollama-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-gateway
+    volumes:
+      - ./nginx-gateway/conf.d:/etc/nginx/conf.d
+      - ./nginx-gateway/cert:/etc/nginx/cert
+      - ./nginx-gateway/.htpasswd:/etc/nginx/.htpasswd
+    restart: always
+    ports:
+      - "443:443"
+      - "8443:8443"  
+    networks:
+      - ollama-network
+
+networks:
+  ollama-network:
+    driver: bridge
+
