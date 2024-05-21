@@ -1,6 +1,8 @@
+
 # Adminguide
 
 ## Architecture
+
 The LLM infrastructure consists of the following components, users, and interactions including hardware specifications and software versions of a tested and working example setup:
 ![Components, users, and actions in the LLM infrastructure tech stack](https://i.imgur.com/jjqr3vk.png)
 Figure 1: Components, users, and actions in the LLM infrastructure tech stack
@@ -8,6 +10,7 @@ Figure 1: Components, users, and actions in the LLM infrastructure tech stack
 WebUI and API users access the WebUI and the API through the mapped ports of the NGINX gateway. Except for the internal configuration of the WebUI, administration is done via SSH access to the host machine running the Docker containers, and possibly by logging into the Docker containers from it. The configuration of individual services and the Docker setup is text-based and can be adjusted using text editors. The internal WebUI configuration is done via the admin account created there.
 
 ## Folders and Files
+
 For the setup, the following folders and files with corresponding functions are relevant:
 - `setup.sh`
   Script contains everything required for installation or first execution
@@ -39,6 +42,7 @@ For the setup, the following folders and files with corresponding functions are 
   - Authentication mechanism for direct API requests
 
 ## Tasks and Functions
+
 - **Setup**
   - Add a private key and SSL certificate under `nginx-gateway/cert/` or generate your own via execution of setup script
   - Execute the setup script
@@ -66,6 +70,7 @@ For the setup, the following folders and files with corresponding functions are 
   - Simply copy the folder structure to a new server that meets the requirements and start as usual
 
 ## Requirements
+
 The entire setup and requirements assume the use of NVIDIA graphics cards for inference. Using AMD graphics cards (ROCm) or CPU-based inference (AVX) is also possible but has not yet been considered or tested.
 - The following software must be installed:
   - "NVIDIA Drivers"
@@ -82,6 +87,7 @@ The entire setup and requirements assume the use of NVIDIA graphics cards for in
 - Ports 443 and 8443 must be free on the host machine (otherwise, port mappings in `docker-compose.yaml` must be adjusted accordingly)
 
 ## Notes
+
 - Communication between containers is based on Docker hostnames, access via "localhost:port" does not work by design due to lack of port mappings
 - When hosting in a Kubernetes cluster, adjust or limit the number of reserved graphics cards
 - Currently, containers are restarted when their main process crashes. An unreachable service whose process continues can be detected by additional health checks, but does not lead to a restart. A health-check based restart requires additional scripts or similar and was not implemented for the sake of simplicity.
@@ -89,9 +95,16 @@ The entire setup and requirements assume the use of NVIDIA graphics cards for in
 - For production use, definitely use an SSL certificate issued by a certification authority!
 
 ## Links
+
 -	NVIDIA Container Toolkit Installation: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
 -	NVIDIA Compute Capability: https://developer.nvidia.com/cuda-gpus
+
 -	Ollama Doku: https://github.com/ollama/ollama/tree/main/docs
+
 -	Ollama Model Library: https://ollama.com/
+
 -	Ollama Discord Server: https://discord.com/invite/ollama
+
 -	Open-WebUI Git: https://github.com/open-webui/open-webui
+

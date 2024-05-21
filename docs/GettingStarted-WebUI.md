@@ -1,3 +1,4 @@
+
 # Getting Started with WebUI
 
 Depending on the configuration of the WebUI, the availability of some menu items for a user differs from that of an admin. An admin can select the "Admin Panel" after clicking on their username at the bottom left.

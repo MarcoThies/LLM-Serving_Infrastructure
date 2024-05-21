@@ -1,3 +1,4 @@
+
 # Getting Started with API
 
 In all Curl commands, "localhost" should be replaced with the respective IP, line breaks should be removed, and if necessary, add `-k` to accept a self-signed certificate. For use in the Windows command line, quotation marks, etc., need to be adjusted.
@@ -5,6 +6,7 @@ In all Curl commands, "localhost" should be replaced with the respective IP, lin
 The Ollama API offers the following functionalities in the current version 0.1.34, among others:
 
 ## Management of LLMs
+
 - **Listing all downloaded LLMs:**
   ```
   curl --user username:pw https://localhost:8443/api/tags
@@ -114,10 +116,14 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
  Responses are streamed by default (one http-reply per token). The last response also includes information about load and inference times. For a definition of templates with model parameters, system prompts, and more, Ollama offers the creation of so-called model files. These and all other functions and parameters are
  
  
-# Links
+## Links
+
 https://github.com/ollama/ollama/blob/main/docs/api.md
+
 https://github.com/ollama/ollama/blob/main/docs/openai.md
+
 https://github.com/ollama/ollama/blob/main/docs/modelfile.md
+
 https://ollama.com/library
 
  
