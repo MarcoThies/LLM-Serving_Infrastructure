@@ -11,6 +11,11 @@ servername=""
 # Change current filepath to scripts directory
 cd "$(dirname "$0")"
 
+# Generate folders for ollama and open-webui
+mkdir -p ollama
+mkdir -p open-webui
+mkdir -p nginx-gateway/cert
+
 echo "Do you want to generate a certificate? (y/n)"
 read generate_cert
 if [ "$generate_cert" = "y" ]; then
