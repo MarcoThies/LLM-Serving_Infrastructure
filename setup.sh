@@ -11,7 +11,7 @@ servername=""
 # Change current filepath to scripts directory
 cd "$(dirname "$0")"
 
-# Generate folders for ollama and open-webui
+# Generate new folders (that can't get stored in git)
 mkdir -p ollama
 mkdir -p open-webui
 mkdir -p nginx-gateway/cert
