@@ -1,29 +1,29 @@
 
 # Getting Started with API
 
-In all Curl commands, "localhost" should be replaced with the respective IP, line breaks should be removed, and if necessary, add `-k` to accept a self-signed certificate. For use in the Windows command line, quotation marks, etc., need to be adjusted.
+In all Curl commands, "localhost" should be replaced with the respective IP, line breaks should be removed and if necessary add `-k` to accept a self-signed certificate. For use in the Windows CMD quotation marks need to be adjusted.
 
-The Ollama API offers the following functionalities in the current version 0.1.34, among others:
+Among others the Ollama API offers the following functionalities in the current version 0.1.34:
 
 ## Management of LLMs
 
-- **Listing all downloaded LLMs:**
+- **List all downloaded LLMs:**
   ```
   curl --user username:pw https://localhost:8443/api/tags
   ```
 
-- **Herunterladen eines LLMs vom Ollamas Model library:**
+- **Download LLMs from Ollama Model Library:**
   ```
   curl --user username:pw https://localhost:8443/api/pull -d '{
   "name": "llama3:8b"
   }'
   ```
 
-A desired LLM is always identified by its basic name (e.g., llama3) and a tag with information about the corresponding execution regarding size, fine-tune, and quantification (e.g., 8b-instruct-q5_K_M). A link to the Ollama Model Library with all available LLMs and their executions is provided below. The file-based import of LLMs can be done on the server by the administrator using .GGUF and .safetensor files.
+A desired LLM is always identified by its basic name (e.g., llama3) and a tag with information about the corresponding version regarding size, fine-tune, and quantisation (e.g., 8b-instruct-q5_K_M). A link to the Ollama Model Library with all available LLMs and their versions is provided below. A in import of LLMs via .GGUF and .safetensor files can be done on the server by the administrator.
 
 ## Inference
 
- - General text generation:
+ - general text generation:
   ```
   curl --user username:pw https://localhost:8443/api/generate -d '{
   "model": "llama3",
@@ -31,7 +31,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
   }'
   ```
 
- - General text generation with several available parameters
+ - general text generation with a selection of available parameters
   ```
   curl --user username:pw https://localhost:8443/api/generate -d '{
   "model": "llama3",
@@ -73,7 +73,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
    }'
   ```
  
- - Text generation in chat context:
+ - text generation in chat context:
   ```
   curl --user username:pw https://localhost:8443/api/chat -d '{
   "model": "llama3",
@@ -86,7 +86,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
   }'
   ```
  
- - Text generation according to OpenAI standard:
+ - text generation according to OpenAI standard:
   ```
   curl --user username:pw https://localhost:8443/v1/chat/completions \
    	-H "Content-Type: application/json" \
@@ -105,7 +105,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
 	}'
   ```
  
- - Generation of vector embeddings for text:
+ - generation of vector embeddings for text:
   ```
   curl --user username:pw https://localhost:8443/api/embeddings -d '{
   "model": "all-minilm",
@@ -113,7 +113,7 @@ A desired LLM is always identified by its basic name (e.g., llama3) and a tag wi
   }'
   ```
  
- Responses are streamed by default (one http-reply per token). The last response also includes information about load and inference times. For a definition of templates with model parameters, system prompts, and more, Ollama offers the creation of so-called model files. These and all other functions and parameters are
+Responses are streamed by default (one http-reply per token). The last response also includes information about load and inference times. For a definition of templates with model parameters, system prompts, and more Ollama offers the creation of so-called model files. These and all other functions and parameters are documented extensively in Ollama Git-Repo.
  
  
 ## Links
